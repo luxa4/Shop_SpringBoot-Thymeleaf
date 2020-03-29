@@ -6,6 +6,7 @@
 </head>
 <body>
 <div th:fragment="loginPage">
+    <div class="alert alert-warning hidden-print" role="alert" th:if="${param.error!=null}"> Sorry! Invalid user name or password!</div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="card col-xs-12 col-sm-10 col-md-8 col-lg-4">
