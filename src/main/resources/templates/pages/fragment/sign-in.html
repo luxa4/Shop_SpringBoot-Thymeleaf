@@ -5,7 +5,7 @@
     <title>SignIn</title>
 </head>
 <body>
-<div th:fragment="mySignIn">
+<div th:fragment="mySignIn" th:if="${registrationLoginPage}==null">
     <!--<form action="/sign-in" th:action="@{/sign-in}" method="post" >-->
         <!--<input type="hidden" name="success_url" th:value="${success_url}" value="">-->
         <!--<button type="submit" class="btn btn-primary navbar-btn navbar-right sign-in"><i class="fa fa-facebook-official" aria-hidden="true"></i> Sign in</button>-->

@@ -19,6 +19,7 @@ public class ShowShoppingCartController extends AbstractController {
     protected String showShoppingCart (HttpServletRequest req, Model model) {
         // Verify if SoppingCart is null, we redirect to /products
         if (SessionUtil.isCurrentShoppingCartCreated(req)) {
+            model.addAttribute("registrationLoginPageInHeader", "yes");
             model.addAttribute("showActionColumn", "true");
             model.addAttribute("CURRENT_PAGE", "pages/page/shopping-cart.html");
             model.addAttribute("PAGE", "shoppingCart");

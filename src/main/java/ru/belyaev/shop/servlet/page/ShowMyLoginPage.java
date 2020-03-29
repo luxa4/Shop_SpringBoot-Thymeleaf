@@ -16,8 +16,10 @@ ShowMyLoginPage {
 
     @GetMapping(value = "/showMyLoginPage")
     public String showMyLoginPage(Model model) {
+        model.addAttribute("registrationLoginPage", "yes");
         model.addAttribute("CURRENT_PAGE", "pages/page/loginPage.html");
         model.addAttribute("PAGE", "loginPage");
         return "pages/page-template";
     }
 }
+

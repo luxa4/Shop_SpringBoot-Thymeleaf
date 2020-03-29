@@ -37,6 +37,7 @@ public class RegistrationController {
 
     @GetMapping("/showRegistrationForm")
     public String showMyLoginPage(Model theModel) {
+        theModel.addAttribute("registrationLoginPage", "yes");
         theModel.addAttribute("crmUser", new Account());
         theModel.addAttribute("CURRENT_PAGE", "pages/page/registration-form.html");
         theModel.addAttribute("PAGE", "registration-form");

@@ -37,7 +37,7 @@
                             <li><a href="" th:href="@{/logout}">Log out</a></li>
                         </ul>
                 </div>
-                <div th:if="${session.CURRENT_ACCOUNT}==null">
+                <div th:if="${session.CURRENT_ACCOUNT==null}">
                     <div th:replace="pages/fragment/sign-in.html :: mySignIn" ></div>
                 </div>
              </div>
