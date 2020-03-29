@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>product-table</title>
+</head>
+<body>
+<table class="table table-bordered" th:fragment="product-table" >
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Count</th>
+        <div th:if="${showActionColumn}">
+            <th class="hidden-print">Action</th>
+        </div>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:each="item : ${session.CURRENT_SHOPPING_CART.items}">
+        <tr id="" th:id="'product'+${item.product.id}" class="item">
+            <td class="text-center"><img class="small" src="" th:src="@{${item.product.imageLink}}" alt="" th:alt="${item.product.name}" th:inline="text"><br>[[${item.product.name}]]</td>
+            <td class="price" th:text="'$' + ${item.product.price}"> 88</td>
+            <td class="count" th:text="${item.count}"> 88</td>
+            <div th:if="${showActionColumn}">
+                <td class="hidden-print">
+                    <div th:if="${item.count}>1">
+                       <a class="btn btn-danger remove-product" th:attr="data-id-product=${item.product.id}" data-count="1"> Remove one</a><br><br>
+                       <a class="btn btn-danger remove-product remove-all" th:attr="data-id-product=${item.product.id}, data-count=${item.count}"> Remove all</a>
+                    </div>
+                    <div th:if="${item.count}<=1">
+                       <a class="btn btn-danger remove-product" th:attr="data-id-product=${item.product.id}" data-count="1"> Remove one</a>
+                    </div>
+                </td>
+            </div>
+        </tr>
+    </div>
+    <tr>
+        <td colspan="2" class="text-right"><strong>Total:</strong></td>
+        <td th:colspan="${showActionColumn} ? 2 : 1" class="total" th:text="'$' + ${session.CURRENT_SHOPPING_CART.totalCost}">$ 88</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

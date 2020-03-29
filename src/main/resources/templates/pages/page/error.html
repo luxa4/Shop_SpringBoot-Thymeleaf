@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="alert alert-danger" th:fragment="error">
+    <h1 th:inline="text">Code: [[${statusCode}]]</h1>
+
+    <div th:switch="${statusCode}">
+        <p th:case="'403'"> You don't have permission to visit this page.</p>
+        <p th:case="'404'"> This page doesn't exist.</p>
+        <p th:case="*"> Can't process this request. Please, try again later.</p>
+    </div>
+</div>
+</body>
+</html>

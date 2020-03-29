@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="order" th:fragment="order">
+    <div th:if="${CURRENT_MESSAGE} != null">
+        <div class="alert alert-success hidden-print" role="alert" th:text="${CURRENT_MESSAGE}"> Some message</div>
+    </div>
+    <h4 class="text-center" th:inline="text">Order # [[${order.id}]]</h4>
+    <hr />
+    <table class="table table-bordered" th:fragment="product-table" >
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Count</th>
+            <div th:if="${showActionColumn}">
+                <th class="hidden-print">Action</th>
+            </div>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="item : ${order.products}">
+            <tr id="" th:id="'product'+${item.product.id}" class="item">
+                <td class="text-center"><img class="small" src="" th:src="@{${item.product.imageLink}}" alt="" th:alt="${item.product.name}" th:inline="text"><br>[[${item.product.name}]]</td>
+                <td class="price" th:text="'$' + ${item.product.price}"> 88</td>
+                <td class="count" th:text="${item.count}"> 88</td>
+                <div th:if="${showActionColumn}">
+                    <td class="hidden-print">
+                        <div th:if="${item.count}>1">
+                            <a class="btn btn-danger remove-product" th:attr="data-id-product=${item.product.id}" data-count="1"> Remove one</a><br><br>
+                            <a class="btn btn-danger remove-product remove-all" th:attr="data-id-product=${item.product.id}, data-count=${item.count}"> Remove all</a>
+                        </div>
+                        <div th:if="${item.count}<=1">
+                            <a class="btn btn-danger remove-product" th:attr="data-id-product=${item.product.id}" data-count="1"> Remove one</a>
+                        </div>
+                    </td>
+                </div>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+    <div class="row hidden-print">
+        <div class="col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5">
+            <a href="#" th:href="@{/my-orders}" class="btn btn-primary btn-block">Go to My orders</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

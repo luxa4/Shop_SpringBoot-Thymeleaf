@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="my-orders">
+    <h4 class="text-center">My orders</h4>
+    <hr />
+    <div th:if="${orders==null}">
+           <div class="alert alert-danger hidden-print text-center" role="alert" > No orders found</div>
+    </div>
+    <table id="myOrders" class="table table-bordered" data-page-number="1" th:attr="data-page-count=${pageCount}" th:if="${orders!= null}">
+        <thead>
+        <tr>
+            <th>Order id</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="item"  th:each="order : ${orders}">
+                <td><a href="#" th:href="@{/order(id=${order.id })}" th:inline="text">Your order № [[${order.id}]]</a></td>
+                <td th:text="${order.created}">88</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center hidden-print">
+        <div th:if="${pageCount} > 1">
+           <a id="loadMoreMyOrders" class="btn btn-success">Load more my orders</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

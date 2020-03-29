@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="search-result">
+    <div class="alert alert-info">
+        <p>Found <strong th:text="${productCount}">88</strong></p>
+    </div>
+    <div th:replace="pages/page/products.html :: products" ></div>
+</div>
+</body>
+</html>

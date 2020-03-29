@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+</head>
+<body>
+<header th:fragment="myHeader">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ishopNav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/products">IShop</a>
+            </div>
+            <div class="collapse navbar-collapse" id="ishopNav">
+                <ul id="currentShoppingCart" class="nav navbar-nav navbar-right" th:classappend="(${session.CURRENT_SHOPPING_CART}==null or ${PAGE}=='shoppingCart') ? 'hidden' : ''">
+                    <li class="dropdown" >
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart (<span class="total-count" th:text="${session.CURRENT_SHOPPING_CART}!=null ? ${session.CURRENT_SHOPPING_CART.totalCount} : ' '">88</span>)<span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu shopping-cart-desc">
+                            Total count: <span class="total-count" th:text="${session.CURRENT_SHOPPING_CART}!=null ? ${session.CURRENT_SHOPPING_CART.totalCount} : ' '">88</span><br>
+                            Total cost: <span class="total-cost" th:text="${session.CURRENT_SHOPPING_CART}!=null ? ${session.CURRENT_SHOPPING_CART.totalCost} : ' '">88</span><br>
+                            <a href="#" th:href="@{/shopping-cart}" id="viewCart" class="btn btn-primary btn-block">View cart</a>
+                        </div>
+                    </li>
+                </ul>
+                <div th:if="${session.CURRENT_ACCOUNT}!=null">
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li><a th:text="${session.CURRENT_ACCOUNT.description}"> Description</a></li>
+                            <li><a href="" th:href="@{/my-orders}">My orders</a></li>
+                            <li><a href="" th:href="@{/logout}">Log out</a></li>
+                        </ul>
+                </div>
+                <div th:if="${session.CURRENT_ACCOUNT}==null">
+                    <div th:replace="pages/fragment/sign-in.html :: mySignIn" ></div>
+                </div>
+             </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>product-list</title>
+</head>
+<body>
+<div  th:fragment="product-list">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xlg-2" th:each="p : ${products}">
+        <!-- PRODUCT DATA -->
+        <div id="" th:id="'product'+${p.id}" class="panel panel-default product" >
+            <div class="panel-body">
+                <div class="thumbnail">
+                    <img src="" th:src="@{${p.imageLink}}" alt="" th:alt="${p.name}">
+                    <div class="desc">
+                        <div class="cell">
+                            <p th:inline="text">
+                                <span class="title">Details</span>
+                                [[${p.description}]]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="name"  th:text="${p.name}"> Iphone 11 pro</h4>
+                <div class="code"  th:text="'Code: ' + ${p.id}">Code: 25747</div>
+                <div class="price" th:text="'$ ' + ${p.price}">$ 100</div>
+                <a class="btn btn-primary pull-right buy-btn" th:attr="data-id-product=${p.id}">Buy</a>
+                <div class="list-group">
+                    <span class="list-group-item"> <small>Category:</small> <span class="category" th:text="${p.category.name}"> Watch</span></span>
+                    <span class="list-group-item"> <small>Producer:</small> <span class="producer" th:text="${p.producer.name}"> Apple</span></span>
+                </div>
+            </div>
+        </div>
+        <!-- /PRODUCT DATA -->
+    </div>
+</div>
+</body>
+</html>

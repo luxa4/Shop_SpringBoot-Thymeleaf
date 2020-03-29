@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>categoryFilter</title>
+</head>
+<body>
+<div th:fragment="categoryFilter">
+    <div class="panel-heading" >Category filters</div>
+    <div class="panel-body categories">
+        <label><input type="checkbox" id="allCategories"> All</label>
+        <div th:each="category : ${session.CATEGORY_LIST}">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="category" th:value="${category.id}" value="1" class="search-option"  th:inline="text" th:checked="${searchForm}!=null ? (${searchForm.categories.contains(category.id)} ? 'true' : 'false') : 'false'">[[${category.name}]]</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

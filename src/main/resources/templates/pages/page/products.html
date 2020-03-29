@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="products">
+    <div id="productList"  th:attr="data-page-count=${pageCount}" data-page-number="1" >
+        <div class="row">
+            <div th:replace="pages/fragment/product-list.html :: product-list" ></div>
+        </div>
+        <div th:if="${pageCount>1}">
+            <div class="text-center hidden-print">
+                <a id="loadMore" class="btn btn-success">Load more products</a>
+            </div>
+        </div>
+    </div>
+        <div th:replace="pages/fragment/add-product-popup.html :: addProductPopup" ></div>
+    </div>
+</body>
+</html>

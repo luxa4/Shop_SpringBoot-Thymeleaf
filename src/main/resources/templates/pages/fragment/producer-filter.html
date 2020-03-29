@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>producerFiltere</title>
+</head>
+<body>
+<div th:fragment="producerFilter">
+    <div class="panel-heading" >Producers filters</div>
+    <div class="panel-body producers">
+        <label><input type="checkbox" id="allProducers"> All</label>
+        <div th:each="pr : ${session.PRODUCER_LIST}">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="producer" th:value="${pr.id}" th:inline="text" class="search-option" th:checked="${searchForm}!=null ? (${searchForm.producers.contains(pr.id)} ? 'true' : 'false') : 'false'"> [[${pr.name}]] ([[${pr.productCount}]])</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
