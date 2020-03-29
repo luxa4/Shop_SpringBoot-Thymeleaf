@@ -15,5 +15,5 @@ public interface UserService extends UserDetailsService {
 
     Account findAccountByEmail(String email);
 
-    void save(Account account, boolean FaceBook);
+    void save(Account account);
 }

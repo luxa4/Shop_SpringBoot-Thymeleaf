@@ -6,14 +6,12 @@
 </head>
 <body>
 <div th:fragment="mySignIn">
-    <form action="/sign-in" th:action="@{/sign-in}" method="post" >
+    <!--<form action="/sign-in" th:action="@{/sign-in}" method="post" >-->
         <!--<input type="hidden" name="success_url" th:value="${success_url}" value="">-->
-        <button type="submit" class="btn btn-primary navbar-btn navbar-right sign-in"><i class="fa fa-facebook-official" aria-hidden="true"></i> Sign in</button>
-    </form>
+        <!--<button type="submit" class="btn btn-primary navbar-btn navbar-right sign-in"><i class="fa fa-facebook-official" aria-hidden="true"></i> Sign in</button>-->
+    <!--</form>-->
     <a th:href="@{/showMyLoginPage}"><button type="submit" class="btn btn-success navbar-btn navbar-right sign-in"> Log in</button></a>
-    <a th:href="@{/register/showRegistrationForm}"><button type="submit" class="btn btn-success navbar-btn navbar-right sign-in"> Registration</button></a>
-
-
+    <a th:href="@{/register/showRegistrationForm}"><button type="submit" class="btn btn-info navbar-btn navbar-right sign-in"> Registration</button></a>
 </div>
 </body>
 </html>

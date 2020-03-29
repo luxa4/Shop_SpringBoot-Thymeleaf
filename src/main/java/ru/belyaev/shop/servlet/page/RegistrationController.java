@@ -73,7 +73,7 @@ public class RegistrationController {
         }
 
         // create user account
-        userService.save(account, false);
+        userService.save(account);
 
         LOGGER.info("Successfully created user: " + userName);
 //

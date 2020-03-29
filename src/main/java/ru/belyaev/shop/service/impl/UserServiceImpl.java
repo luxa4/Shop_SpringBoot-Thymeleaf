@@ -65,15 +65,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void save(Account account, boolean FaceBook) {
+    public void save(Account account) {
         Account theAccount = new Account();
         theAccount.setName(account.getName());
         theAccount.setEmail(account.getEmail());
-        if (FaceBook) {
-            theAccount.setPassword(passwordEncoder.encode("123"));
-        } else {
-            theAccount.setPassword(passwordEncoder.encode(account.getPassword()));
-        }
+        theAccount.setPassword(passwordEncoder.encode(account.getPassword()));
         theAccount.setRoles(Arrays.asList(roleDao.findRoleByRole("ROLE_USER")));
         accountDao.save(theAccount);
     }

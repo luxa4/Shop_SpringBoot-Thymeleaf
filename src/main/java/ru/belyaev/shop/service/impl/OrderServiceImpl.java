@@ -104,7 +104,7 @@ class OrderServiceImpl implements OrderService {
             Account account = accountDao.findAccountByEmail(socialAccount.getEmail());
             if (account == null) {
                 account = new Account(socialAccount.getName(), socialAccount.getEmail());
-                userService.save(account,true);
+                userService.save(account);
             }
             return account;
         } catch (Exception e) {
