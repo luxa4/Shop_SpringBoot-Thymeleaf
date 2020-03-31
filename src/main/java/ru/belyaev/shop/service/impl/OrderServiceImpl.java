@@ -65,8 +65,8 @@ class OrderServiceImpl implements OrderService {
         }
     }
 
-    @Transactional
     @Override
+    @Transactional
     public long makeOrder(ShoppingCart shoppingCart, Account currentAccount) {
         if (shoppingCart == null || shoppingCart.getItems().isEmpty()) {
             throw new InternalServerErrorException("Shopping cart is null or empty");
@@ -97,8 +97,8 @@ class OrderServiceImpl implements OrderService {
         return parameterList;
     }
 
-    @Transactional
     @Override
+    @Transactional
     public Account authenticate(SocialAccount socialAccount) {
         try {
             Account account = accountDao.findAccountByEmail(socialAccount.getEmail());
