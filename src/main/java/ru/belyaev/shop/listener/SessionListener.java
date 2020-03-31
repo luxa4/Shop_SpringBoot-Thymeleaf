@@ -18,7 +18,6 @@ import javax.servlet.http.HttpSessionListener;
 
 @WebListener
 public class SessionListener implements HttpSessionListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SessionListener.class);
 
     @Autowired
     private ProductService productService;
@@ -27,7 +26,6 @@ public class SessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent se) {
         se.getSession().setAttribute("CATEGORY_LIST", productService.listAllCategories());
         se.getSession().setAttribute("PRODUCER_LIST",  productService.listAllProducers());
-        LOGGER.info("Session created");
     }
 
     @Override
