@@ -4,7 +4,7 @@
 
 package ru.belyaev.shop.entity;
 
-import javafx.print.Collation;
+
 import ru.belyaev.shop.model.CurrentAccount;
 
 import javax.persistence.*;
