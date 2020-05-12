@@ -31,8 +31,8 @@ CREATE TABLE role
 );
 
 -- Добавим роли
-INSERT INTO "public"."role" ("id", "role") VALUES (DEFAULT, 'ROLE_USER');
-INSERT INTO "public"."role" ("id", "role") VALUES (DEFAULT, 'ROLE_ADMIN');
+INSERT INTO role ("id", "role") VALUES (DEFAULT, 'ROLE_USER');
+INSERT INTO role ("id", "role") VALUES (DEFAULT, 'ROLE_ADMIN');
 
 -- Таблица прав доступа и соотвутствующих им акк
 CREATE TABLE accounts_roles
