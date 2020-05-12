@@ -124,7 +124,6 @@ public class TestDataGenerator {
 			st.executeUpdate("delete from product");
 			st.executeUpdate("delete from category");
 			st.executeUpdate("delete from producer");
-			st.executeUpdate("delete from role");
 			st.executeUpdate("delete from accounts_roles");
 		}
 		System.out.println("Db cleared");
